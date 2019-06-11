@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <assert.h>
 
+#define INT_MAX 2147483647
+
 struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(nullptr) {}};
 
 namespace leetcode
