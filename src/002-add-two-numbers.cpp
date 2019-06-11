@@ -2,13 +2,6 @@
 
 using namespace std;
 
-struct ListNode
-{
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(nullptr) {}
-};
-
 class Solution
 {
 public:
@@ -40,39 +33,16 @@ public:
 
         return head;
     }
-
-    static ListNode *createList(int number)
-    {
-        ListNode *head = nullptr, *tail = nullptr;
-        int tmp;
-
-        while (number > 0) {
-            tmp = number % 10;
-            number /= 10;
-
-            if (head == nullptr) {
-                head = tail = new ListNode(tmp);
-            } else {
-                tail->next = new ListNode(tmp);
-                tail = tail->next;
-            }
-        }
-
-        return head;
-    }
 };
 
 int main(int argc, char **argv)
 {
-    ListNode *l1 = Solution::createList(342);
-    ListNode *l2 = Solution::createList(465);
+    ListNode *l1 = leetcode::createList(342);
+    ListNode *l2 = leetcode::createList(465);
 
     ListNode *res = (new Solution)->addTwoNumbers(l1, l2);
 
-    assert(res->val == 7);
-    assert(res->next->val == 0);
-    assert(res->next->next->val == 8);
-    assert(res->next->next->next == nullptr);
+    check(res, 807);
 
     return 0;
 }
