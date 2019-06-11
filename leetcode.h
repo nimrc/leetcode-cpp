@@ -12,7 +12,9 @@
 #include <unordered_map>
 #include <assert.h>
 
+#ifndef INT_MAX
 #define INT_MAX 2147483647
+#endif
 
 struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(nullptr) {}};
 
