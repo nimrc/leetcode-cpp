@@ -16,6 +16,8 @@
 #define INT_MAX 2147483647
 #endif
 
+#define assert_true(val) assert(val == true)
+
 struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(nullptr) {}};
 
 namespace leetcode
