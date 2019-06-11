@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include <unordered_map>
+#include <leetcode.h>
 
 using namespace std;
 
@@ -31,7 +29,6 @@ int main(int argc, char **argv)
 
     int res = (new Solution)->lengthOfLongestSubstring(input);
 
-    cout << res << endl;
     assert(res == 3);
 
     return 0;
