@@ -21,9 +21,11 @@ public:
 
     void order(TreeNode *node, vector<int> *res)
     {
-        if (node->left) order(node->left, res);
+        if (node->left)
+            order(node->left, res);
         res->push_back(node->val);
-        if (node->right) order(node->right, res);
+        if (node->right)
+            order(node->right, res);
     }
 
 };
@@ -32,7 +34,7 @@ int main(int argc, char **argv)
 {
     vector<int> nodes = {1, NONE, 2, 3};
 
-    TreeNode *tree = leetcode::createTree(nodes);
+    Tree tree = leetcode::createTree(nodes);
 
     vector<int> res = (new Solution)->inorderTraversal(tree);
 

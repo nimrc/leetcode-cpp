@@ -19,12 +19,16 @@
 
 #define NONE -1
 
-#define assert_true(val) assert(val == true)
 #define blank(n) std::string(n, ' ')
+#define assert_true(val) assert(val == true)
+#define assert_false(val) assert(val == false)
+#define assert_null(val) assert(val == nullptr)
 
 struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(nullptr) {}};
 
 struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}};
+
+typedef TreeNode* Tree;
 
 namespace leetcode
 {
@@ -49,7 +53,7 @@ ListNode *createList(int seq)
     return head;
 }
 // create new binary tree
-TreeNode *createTree(std::vector<int> nodes, int idx = 0)
+Tree createTree(std::vector<int> nodes, int idx = 0)
 {
     if (idx >= nodes.size())
         return nullptr;
