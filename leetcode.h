@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
+#include <queue>
 #include <assert.h>
 
 #ifndef INT_MAX
@@ -19,6 +20,7 @@
 #define NONE -1
 
 #define assert_true(val) assert(val == true)
+#define blank(n) std::string(n, ' ')
 
 struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(nullptr) {}};
 
@@ -26,7 +28,7 @@ struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode(int x) : va
 
 namespace leetcode
 {
-
+// create new linked list
 ListNode *createList(int seq)
 {
     ListNode *head = nullptr, *tail = nullptr;
@@ -46,7 +48,7 @@ ListNode *createList(int seq)
 
     return head;
 }
-
+// create new binary tree
 TreeNode *createTree(std::vector<int> nodes, int idx = 0)
 {
     if (idx >= nodes.size())
@@ -57,11 +59,37 @@ TreeNode *createTree(std::vector<int> nodes, int idx = 0)
 
     auto *node = new TreeNode(nodes[idx]);
 
-    node->left = createTree(nodes, idx + 1);
-    node->right = createTree(nodes, idx + 2);
+    node->left = createTree(nodes, idx * 2 + 1);
+    node->right = createTree(nodes, idx * 2 + 2);
 
     return node;
 };
+
+// get binary tree depth
+int treeDepth(TreeNode *root)
+{
+    int depth = 0;
+
+    if (root != nullptr) {
+        std::queue<TreeNode *> Q;
+        Q.push(root);
+
+        while (!Q.empty()) {
+            ++depth;
+            for (int i = 0, size = Q.size(); i < size; ++i) {
+                TreeNode *node = Q.front();
+                Q.pop();
+
+                if (node->left)
+                    Q.push(node->left);
+                if (node->right)
+                    Q.push(node->right);
+            }
+        }
+    }
+
+    return depth;
+}
 
 }
 
@@ -99,26 +127,6 @@ void dump(ListNode *list)
     }
 
     std::cout << iter->val << std::endl;
-}
-
-void dump(TreeNode *tree, bool root = true)
-{
-    if (root) {
-        std::cout << " " << tree->val << std::endl;
-        std::cout << "/ \\" << std::endl;
-    }
-
-    if (tree->left) {
-        std::cout << tree->left->val << "   ";
-        dump(tree->left, false);
-    }
-
-    if (tree->right) {
-        std::cout << "   " << tree->right->val;
-        std::cout << std::endl;
-        std::cout << "   / \\" << std::endl;
-        dump(tree->right, false);
-    }
 }
 
 #endif //LEETCODE_CPP_H
