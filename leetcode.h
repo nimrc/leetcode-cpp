@@ -20,15 +20,16 @@
 #define NONE -1
 
 #define blank(n) std::string(n, ' ')
-#define assert_true(val) assert(val == true)
-#define assert_false(val) assert(val == false)
-#define assert_null(val) assert(val == nullptr)
+#define assert_equal(actual, expect) assert(actual == expect)
+#define assert_true(val) assert_equal(val, true)
+#define assert_false(val) assert_equal(val, false)
+#define assert_null(val) assert_equal(val, nullptr)
 
 struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(nullptr) {}};
 
 struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}};
 
-typedef TreeNode* Tree;
+typedef TreeNode *Tree;
 
 namespace leetcode
 {
