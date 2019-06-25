@@ -17,6 +17,10 @@
 #define INT_MAX 2147483647
 #endif
 
+#ifndef INT_MIN
+#define INT_MIN (-2147483647-1)
+#endif
+
 #define NONE -1
 
 #define blank(n) std::string(n, ' ')
